@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Russo+One&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', -apple-system, sans-serif;
+  background-color: #050508;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  color: #ffffff;
+}
+
+h1, h2, h3, h4, .ant-typography h1, .ant-typography h2, .ant-typography h3, .ant-typography h4 {
+  font-family: 'Russo One', sans-serif !important;
+  letter-spacing: 0.02em;
+}
+
+/* --- Контейнер для пятен --- */
+.blob-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.45;
+  animation: floatAndHue 25s infinite ease-in-out alternate;
+}
+
+/* --- Пятно 1 (Зеленовато-синее) --- */
+.blob-1 {
+  top: -10%; left: -10%;
+  width: 50vw; height: 50vw;
+  background: radial-gradient(circle, rgba(0, 255, 102, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+  animation-delay: 0s;
+}
+
+/* --- Пятно 2 (Бирюзовое, чтобы было ближе к зелени) --- */
+.blob-2 {
+  bottom: -20%; right: -10%;
+  width: 60vw; height: 60vw;
+  background: radial-gradient(circle, rgba(0, 255, 200, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+  animation-delay: -8s;
+}
+
+/* --- Пятно 3 (АЛЬФА-КРАСНЫЙ) --- */
+.blob-3 {
+  top: 30%; left: 40%;
+  width: 45vw; height: 45vw;
+  background: radial-gradient(circle, rgba(239, 49, 36, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+  animation-delay: -16s;
+}
+
+@keyframes floatAndHue {
+  0% {
+    transform: translate(0, 0) scale(1);
+    filter: blur(120px) hue-rotate(0deg);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.15);
+    filter: blur(120px) hue-rotate(30deg); 
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(0.9);
+    filter: blur(120px) hue-rotate(-30deg);
+  }
+}
+
+/* --- Фоновые нити --- */
+.threads-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.thread-path {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* Кастомный скроллбар (сделали его зеленоватым) */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #050508; }
+::-webkit-scrollbar-thumb { background: #1a2e25; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #2a4a3c; }
